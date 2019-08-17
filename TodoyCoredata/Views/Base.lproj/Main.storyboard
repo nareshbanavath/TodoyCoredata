@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NLG-lk-p1c">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Todoy-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="TodoListViewController" id="BYZ-38-t0r" customClass="TodoyListViewController" customModule="TodoyCoredata" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pGs-Od-2qx">
+                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="a6L-yy-WcU">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="a6L-yy-WcU" id="ca0-mY-KLj">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Y50-fw-MJ6"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="HaL-Bg-aRf"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="search Here" translatesAutoresizingMaskIntoConstraints="NO" id="8Al-Bx-pHk">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <color key="backgroundColor" red="0.11417675763368607" green="0.25852677226066589" blue="0.060118034482002258" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="qqG-75-iG4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.99949294328689575" green="0.017544606700539589" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ABJ-Zh-hju"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pGs-Od-2qx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BfU-37-mNx"/>
+                            <constraint firstItem="pGs-Od-2qx" firstAttribute="top" secondItem="8Al-Bx-pHk" secondAttribute="bottom" id="ICC-dq-KB3"/>
+                            <constraint firstItem="pGs-Od-2qx" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="QMV-Jp-dCm"/>
+                            <constraint firstItem="8Al-Bx-pHk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="W7Y-of-YLS"/>
+                            <constraint firstItem="8Al-Bx-pHk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a3e-MQ-hwc"/>
+                            <constraint firstItem="pGs-Od-2qx" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kd2-X0-8gW"/>
+                            <constraint firstItem="8Al-Bx-pHk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r3h-ji-XZP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Todoy" id="fUe-va-G24">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="q6R-kY-oXw">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonAction:" destination="BYZ-38-t0r" id="iOi-Uw-xP3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="8Al-Bx-pHk" id="2Au-bj-PnX"/>
+                        <outlet property="tableview" destination="pGs-Od-2qx" id="9gm-lG-hi1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="439"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EBo-iR-eZz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NLG-lk-p1c" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vKH-Nr-Bvy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3d5-0G-EyT" kind="relationship" relationship="rootViewController" id="P5j-85-IGJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZq-my-Nid" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-120" y="439"/>
+        </scene>
+        <!--Todoy-->
+        <scene sceneID="IpY-Id-L4H">
+            <objects>
+                <tableViewController id="3d5-0G-EyT" customClass="CategoryViewController" customModule="TodoyCoredata" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z5x-s1-FPX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="A94-XR-gPY">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A94-XR-gPY" id="tX4-P3-WAg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3d5-0G-EyT" id="L95-XC-jaG"/>
+                            <outlet property="delegate" destination="3d5-0G-EyT" id="hkl-O4-imH"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Todoy" id="Xwe-UX-xsO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uaf-Vd-kIY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="3d5-0G-EyT" id="OWb-f8-Wna"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="category" id="zMD-Nv-qr0"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Rj-4H-lar" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="439"/>
+        </scene>
+    </scenes>
+</document>
