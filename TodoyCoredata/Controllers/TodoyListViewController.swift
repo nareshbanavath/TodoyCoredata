@@ -70,7 +70,7 @@ class TodoyListViewController: UIViewController {
     func loadItems(with request : NSFetchRequest<Item> = Item.fetchRequest()) {
         
         //preparing request object to fetch data from persistent container
-        //here givign type to request is mandotary (let reuest = Item.fetchRequest() gives you 'ambiguos error'
+        //here giving type to request is mandotary (let reuest = Item.fetchRequest() gives you 'ambiguos error')
        let predicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
         request.predicate = predicate
         do{
