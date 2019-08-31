@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import CoreData
-
+//import CoreData
+import RealmSwift
 class CategoryViewController: UITableViewController {
     
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var categoryArray = [Category]()
+    let realm = try! Realm()
+   // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var categoryArray : Results<Category>?
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -27,11 +27,11 @@ class CategoryViewController: UITableViewController {
             if let textfield = textField
             {
                 //print(textfield.text!)
-                let category = Category(context: self.context)
+                 let category = Category()
                 //print(self.context.hasChanges)
                 category.name = textfield.text!
-                self.categoryArray.append(category)
-                self.saveData()
+               //self.categoryArray.append(category)
+                self.saveData(category: category)
                 
             }
             
@@ -43,10 +43,12 @@ class CategoryViewController: UITableViewController {
         
     }
     //MARK:- Data Manipulation methods
-    func saveData()
+    func saveData(category : Category)
     {
         do {
-            try context.save()
+            try realm.write {
+                realm.add(category)
+            }
             
         }catch{
             print("error saving data\(error)")
@@ -54,14 +56,17 @@ class CategoryViewController: UITableViewController {
         self.tableView.reloadData()
     }
     func loadData() {
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        do{
-        categoryArray = try context.fetch(request)
-        }
-        catch{
-            print("error fetching data\(error)")
-        }
+        
+        categoryArray = realm.objects(Category.self)
         self.tableView.reloadData()
+        
+        //        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        //        do{
+        //        categoryArray = try context.fetch(request)
+        //        }
+        //        catch{
+        //            print("error fetching data\(error)")
+        //        }
     }
 
 
@@ -70,11 +75,11 @@ extension CategoryViewController{
     
     //MARK:- Tableview DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryArray.count
+        return categoryArray?.count ?? 0
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) 
-        cell.textLabel?.text = categoryArray[indexPath.row].name
+        cell.textLabel?.text = categoryArray?[indexPath.row].name
         
         return cell
     }
@@ -86,7 +91,7 @@ extension CategoryViewController{
         let destinationVC = segue.destination as! TodoyListViewController
         if let indexPath = self.tableView.indexPathForSelectedRow
         {
-            destinationVC.selectedCategory = self.categoryArray[indexPath.row]
+            destinationVC.selectedCategory = self.categoryArray?[indexPath.row]
         }
     }
 }
